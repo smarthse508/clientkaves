@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
-import Login from "./pages/Login";
+import Login from "./pages/login";
 import EmailVerify from "./pages/emailverify";
-import Home from "./pages/Home";
-import ResetPassword from "./pages/ResetPassword";
-import Welcome from "./pages/Welcome";
+import Home from "./pages/home";
+import ResetPassword from "./pages/resetpassword";
+import Welcome from "./pages/welcome";
 
 import kavesLogo from "./assets/kaves.png";
 import proyekImg from "./assets/proyek.jpg";
@@ -16,7 +16,7 @@ import footerLogo from "./assets/kavesfooter.png";
 import social1 from "./assets/social.png";
 import social2 from "./assets/social (1).png";
 import social3 from "./assets/social (2).png";
-import vector from "./assets/Vector.png";
+import vector from "./assets/vector.png";
 import loc from "./assets/loc.png";
 
 function LandingPage() {
@@ -291,3 +291,4 @@ function App() {
 }
 
 export default App;
+
