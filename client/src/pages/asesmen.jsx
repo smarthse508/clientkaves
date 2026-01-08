@@ -16,7 +16,7 @@ function Asesmen({ workspaceId }) {
   const [filterTanggal, setFilterTanggal] = useState("");
   const [searchQuery, setSearchQuery] = useState("");
   const [asesmenListAll, setAsesmenListAll] = useState([]);
-
+  const backendURL = import.meta.env.VITE_BACKEND_URL;
   const [formData, setFormData] = useState({
     jenis_pekerjaan: "",
     jenis_bahaya: "",
@@ -50,7 +50,7 @@ function Asesmen({ workspaceId }) {
     const fetchBangunan = async () => {
       setLoading(true);
       try {
-        const res = await fetch(`http://localhost:5454/api/bangunan/list?ruangkerja_id=${workspaceId}`, {
+        const res = await fetch(`${backendURL}/api/bangunan/list?ruangkerja_id=${workspaceId}`, {
           credentials: "include",
         });
         const data = await res.json();
@@ -66,7 +66,7 @@ function Asesmen({ workspaceId }) {
   const fetchAsesmen = async (bangunanId) => {
     setLoading(true);
     try {
-      const res = await fetch(`http://localhost:5454/api/asesmen/list?bangunan_id=${bangunanId}`, {
+      const res = await fetch(`${backendURL}/api/asesmen/list?bangunan_id=${bangunanId}`, {
         credentials: "include",
       });
       const data = await res.json();
@@ -98,7 +98,7 @@ function Asesmen({ workspaceId }) {
     delete payload.tanggal_dibuat;
 
     const res = await fetch(
-      `http://localhost:5454/api/asesmen/edit?asesmen_id=${editForm.asesmen._id}`,
+      `${backendURL}/api/asesmen/edit?asesmen_id=${editForm.asesmen._id}`,
       {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
@@ -128,7 +128,7 @@ function Asesmen({ workspaceId }) {
   const handleDeleteAsesmen = async () => {
     try {
       const res = await fetch(
-        `http://localhost:5454/api/asesmen/hapus?asesmen_id=${confirmDelete.asesmenId}`,
+        `${backendURL}/api/asesmen/hapus?asesmen_id=${confirmDelete.asesmenId}`,
         { method: "DELETE", credentials: "include" }
       );
 
@@ -184,7 +184,7 @@ function Asesmen({ workspaceId }) {
     e.preventDefault();
     try {
       const res = await fetch(
-        `http://localhost:5454/api/asesmen/tambah?bangunan_id=${selectedBangunan._id}`,
+        `${backendURL}/api/asesmen/tambah?bangunan_id=${selectedBangunan._id}`,
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
