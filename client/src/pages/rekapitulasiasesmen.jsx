@@ -13,6 +13,7 @@ function RekapitulasiAsesmen({ workspaceId }) {
   const [showForm, setShowForm] = useState(false);
   const [editAsesmen, setEditAsesmen] = useState(null);
   const [confirmDelete, setConfirmDelete] = useState({ show: false, id: null });
+  const backendURL = import.meta.env.VITE_BACKEND_URL;
 
   const [formData, setFormData] = useState({
     jenis_pekerjaan: "",
@@ -89,7 +90,7 @@ const handleUpdateAsesmen = async (e) => {
   delete payload.dibuat_oleh;
 
   const res = await fetch(
-    `http://localhost:5454/api/asesmen/edit?asesmen_id=${editAsesmen._id}`,
+    `${backendURL}/api/asesmen/edit?asesmen_id=${editAsesmen._id}`,
     {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
@@ -110,7 +111,7 @@ const handleUpdateAsesmen = async (e) => {
 };
 const handleDeleteAsesmen = async () => {
   const res = await fetch(
-    `http://localhost:5454/api/asesmen/hapus?asesmen_id=${confirmDelete.id}`,
+    `${backendURL}/api/asesmen/hapus?asesmen_id=${confirmDelete.id}`,
     {
       method: "DELETE",
       credentials: "include",
@@ -133,7 +134,7 @@ const handleDeleteAsesmen = async () => {
   useEffect(() => {
     if (!workspaceId) return;
 
-    fetch(`http://localhost:5454/api/bangunan/list?ruangkerja_id=${workspaceId}`, {
+    fetch(`${backendURL}/api/bangunan/list?ruangkerja_id=${workspaceId}`, {
       credentials: "include",
     })
       .then(res => res.json())
@@ -147,7 +148,7 @@ const handleDeleteAsesmen = async () => {
   ====================== */
   const fetchAsesmen = async (bangunanId) => {
     const res = await fetch(
-      `http://localhost:5454/api/asesmen/list?bangunan_id=${bangunanId}`,
+      `${backendURL}/api/asesmen/list?bangunan_id=${bangunanId}`,
       { credentials: "include" }
     );
     const data = await res.json();
@@ -607,3 +608,4 @@ const handleExportPDF = () => {
 }
 
 export default RekapitulasiAsesmen;
+
