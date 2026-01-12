@@ -7,8 +7,8 @@ import ResetPassword from "./pages/resetpassword";
 import Welcome from "./pages/welcome";
 
 import kavesLogo from "./assets/kaves.png";
-import proyekImg from "./assets/proyek.jpg";
-import orangImg from "./assets/orang.jpg";
+import proyekImg from "./assets/pana.png";
+import orangImg from "./assets/bro.png";
 import clipboardImg from "./assets/clipboard.png";
 import mapImg from "./assets/map.png";
 import gridImg from "./assets/grid.png";
@@ -26,7 +26,7 @@ function LandingPage() {
     <>
       {/* ================= HEADER ================= */}
       <header className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
-        <nav className="flex justify-between items-center max-w-7xl mx-auto py-4 px-6">
+        <nav className="flex justify-between items-center max-w-9xl mx-auto py-4 px-6">
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <img src={kavesLogo} alt="KAVES Logo" className="w-10 h-10" />
@@ -53,7 +53,7 @@ function LandingPage() {
             <li>
               <Link
                 to="/login"
-                className="border border-green-600 text-green-600 px-4 py-2 rounded hover:bg-green-600 hover:text-white transition"
+                className="border border-green-600 text-green-600 px-4 py-2 rounded hover:shadow-sm hover:shadow-xl transition-shadow duration-300 transition"
               >
                 Masuk
               </Link>
@@ -129,7 +129,6 @@ function LandingPage() {
             <img
               src={proyekImg}
               alt="KAVES Illustration"
-              className="rounded-2xl shadow-lg w-full"
             />
           </div>
         </div>
@@ -156,7 +155,6 @@ function LandingPage() {
             <img
               src={orangImg}
               alt="Fitur Kaves"
-              className="rounded-2xl shadow-lg w-full"
             />
           </div>
 
