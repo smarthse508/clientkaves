@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { Routes, Route, Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import Login from "./pages/login";
 import EmailVerify from "./pages/emailverify";
 import Home from "./pages/home";
 import ResetPassword from "./pages/resetpassword";
 import Welcome from "./pages/welcome";
-
 import kavesLogo from "./assets/kaves.png";
 import proyekImg from "./assets/pana.png";
 import orangImg from "./assets/bro.png";
@@ -23,14 +23,14 @@ function LandingPage() {
   const [menuOpen, setMenuOpen] = useState(false);
 
   return (
-    <>
+    <div className="animate-fade-in">
       {/* ================= HEADER ================= */}
       <header className="bg-white shadow-md fixed top-0 left-0 w-full z-50">
         <nav className="flex justify-between items-center max-w-9xl mx-auto py-4 px-6">
           {/* Logo */}
           <div className="flex items-center space-x-2">
             <img src={kavesLogo} alt="KAVES Logo" className="w-10 h-10" />
-            <span className="text-2xl font-bold text-green-700">KAVES</span>
+            <span className="text-2xl font-extrabold text-green-700">KAVES</span>
           </div>
 
           {/* Desktop Menu */}
@@ -62,7 +62,7 @@ function LandingPage() {
 
           {/* Mobile Burger */}
           <button
-            className="md:hidden text-green-700 focus:outline-none"
+            className="cursor-pointer md:hidden text-green-700 focus:outline-none"
             onClick={() => setMenuOpen(!menuOpen)}
           >
             {menuOpen ? (
@@ -76,9 +76,15 @@ function LandingPage() {
             )}
           </button>
         </nav>
-
+        <AnimatePresence>
         {/* Mobile Menu Dropdown */}
         {menuOpen && (
+          <motion.div
+          initial={{ height: 0, opacity: 0 }}
+          animate={{ height: "auto", opacity: 1 }}
+          exit={{ height: 0, opacity: 0 }}
+          className="md:hidden bg-white shadow-lg overflow-hidden"
+          >
           <div className="md:hidden bg-white shadow-lg px-6 py-4 space-y-3">
             <a href="#home" className="block text-gray-700 hover:text-green-600">Beranda</a>
             <a href="#tentang" className="block text-gray-700 hover:text-green-600">Tentang</a>
@@ -100,13 +106,15 @@ function LandingPage() {
               Masuk
             </Link>
           </div>
+          </motion.div>
         )}
+        </AnimatePresence>
       </header>
 
-      {/* ================= HERO SECTION ================= */}
+      {/* section: home */}
       <section
         id="home"
-        className="pt-24 bg-gradient-to-r from-green-50 to-white min-h-screen flex flex-col justify-center"
+        className="pt-12 bg-gradient-to-r from-green-50 to-white min-h-screen flex flex-col justify-center"
       >
         <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center justify-between px-6 gap-12">
           {/* Text */}
@@ -134,10 +142,10 @@ function LandingPage() {
         </div>
       </section>
 
-      {/* ================= ABOUT ================= */}
+      {/* section: tentang */}
       <section id="tentang" className="py-20 bg-white">
         <div className="max-w-5xl mx-auto px-6 text-center space-y-4">
-          <h2 className="text-3xl font-bold text-green-700">Apa Itu Kaves?</h2>
+          <h1 className="text-3xl font-extrabold text-green-700">Apa Itu Kaves?</h1>
           <p className="text-gray-600 leading-relaxed">
             Aplikasi pembantu staff dan kepala K3 dalam mengelola aktivitas
             keselamatan kerja secara efisien. Mulai dari pencatatan laporan
@@ -270,7 +278,7 @@ function LandingPage() {
           </div>
         </div>
       </footer>
-    </>
+    </div>
   );
 }
 
